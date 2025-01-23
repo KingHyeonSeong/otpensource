@@ -145,7 +145,7 @@ def crawl_musinsa_product_detail(product_url):
 def main():
     # 여기서 big_category를 아우터/상의/하의/원피스 중 선택, 그리고 카테고리 링크는 sub_category
     category_urls = {
-        "아우터": "https://www.musinsa.com/category/002012?gf=A", # 숏패딩/헤비 아우터
+        "아우터": "https://www.musinsa.com/category/002025?gf=A", # 무스탕/퍼
         # "상의": "카테고리 링크",
         # "하의": "카테고리 링크",
         # "원피스/스커트": "카테고리 링크",
@@ -169,7 +169,7 @@ def main():
     
     # 폴더 "아우터" 안에 JSON 파일 저장
     # (아우터 폴더를 미리 생성)
-    file_path = os.path.join("아우터", "숏패딩_헤비아우터.json")
+    file_path = os.path.join("아우터", "무스탕_퍼.json")
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(all_data, f, indent=2, ensure_ascii=False)
 
