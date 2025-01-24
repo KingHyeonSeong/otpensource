@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
-# 인자로 max_items를 추가하여 크롤링할 상품 개수를 제한할 수 있음음
+# 인자로 max_items를 추가하여 크롤링할 상품 개수를 제한할 수 있음
 def crawl_musinsa_category(category_url, scroll_count=30, max_items=200):
     """
     무신사 특정 카테고리 페이지에서
@@ -78,7 +78,7 @@ def crawl_musinsa_product_detail(product_url):
     chrome_options = Options()
     chrome_options.add_argument("headless")  # 헤드리스 모드(창 안 띄우기)
 
-    # 2) 크롬 실행 (창이 뜨지 않음)
+    # 2) 크롬 실행 
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(product_url)
     #time.sleep(1)
