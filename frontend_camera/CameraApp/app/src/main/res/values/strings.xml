@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CameraApp</string>
+    <string name="LButton_name">Capture</string>
+    <string name="RButton_name">Upload</string>
+    <string name="Status_text">Status: Ready</string>
+    <string name="Popup_title">Captured Image</string>
+    <string name="Popup_btn">Upload</string>
+    <string name="Popup_cancel">Cancel</string>
+</resources>
