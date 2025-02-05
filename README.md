@@ -1,5 +1,3 @@
----
-
 # 👕 **옷픈소스 (Otpensource) - 스마트 옷장 AI 시스템**  
 
 > **AI 기반 스마트 옷장 관리 솔루션**  
@@ -51,16 +49,19 @@
 
 ## 🏗️ **프로젝트 아키텍처**  
 
-```mermaid
-graph TD;
-  User[👤 사용자]-->|📸 옷장 사진 촬영| Android_App[📱 Android 앱]
-  Android_App-->FastAPI_Server[🌐 FastAPI 백엔드]
-  FastAPI_Server-->MongoDB[🗄️ MongoDB 데이터 저장]
-  FastAPI_Server-->AI_Model[🤖 AI Vision Model]
-  AI_Model-->FastAPI_Server
-  FastAPI_Server-->Frontend_UI[🖥️ Gradio 웹 UI]
-  Frontend_UI-->|🌎 사용자 조회| User
-```
+1. 데이터 크롤링 및 AI 학습 파이프라인
+
+<p align="center">
+  <img src="sample_image\pipeline1.png" alt="Vision Model Example" width="700"/>
+</p>
+
+
+1. 안드로이드 앱 및 Frontend, Backend flow-chart
+
+<p align="center">
+  <img src="sample_image\pipeline2.png" alt="Vision Model Example" width="700"/>
+</p>
+
 
 ✔ **Android 앱** → 사용자가 **옷을 관리**하고 AI 데이터를 확인하는 모바일 인터페이스  
 ✔ **FastAPI 백엔드** → AI 분석 요청 처리, 데이터 저장 및 관리  
@@ -73,22 +74,29 @@ graph TD;
 ## 🔧 **기술 스택**  
 
 ### **🛠 Backend**
-- **FastAPI** – 고성능 비동기 REST API  
-- **Uvicorn** – FastAPI 실행 서버  
-- **MongoDB + PyMongo** – 데이터 저장 및 관리  
-- **Docker & Kubernetes** – 배포 및 운영 자동화  
-- **NGINX** – 웹 서버 및 로드 밸런싱  
+- **torchvision** – 이미지 처리 및 딥러닝 모델 제공 (PyTorch)  
+- **pymongo** – MongoDB와 파이썬을 연결하는 데이터베이스 드라이버  
+- **scikit-learn** – 머신러닝 모델 학습 및 평가
+- **fastapi** – 고성능 비동기 REST API 프레임워크  
+- **uvicorn** – FastAPI 실행을 위한 경량 ASGI 서버  
+- **pyngrok** – 로컬 서버를 외부에서 접속 가능하게 하는 터널링 도구  
+- **nest-asyncio** – Jupyter 등에서 비동기 이벤트 루프 실행 지원  
+- **pillow** – 이미지 처리 및 변환을 위한 라이브러리  
+- **python-multipart** – FastAPI에서 파일 업로드를 지원하는 라이브러리  
+- **pydantic** – 데이터 검증 및 설정 관리를 위한 데이터 모델링
 
 ### **🤖 AI Model**
-- **Hugging Face Transformers** – 딥러닝 모델 학습  
-- **Unsloth** – LoRA 기반 경량화 학습 최적화  
-- **PyTorch** – AI 모델 훈련 및 추론  
-- **TRL (Hugging Face)** – 강화 학습 및 파인튜닝 지원  
+- **unsloth** – 경량화된 LLM 파인튜닝 및 최적화
+- **transformers** – 사전 학습된 NLP 모델 제공 (Hugging Face)  
+- **torch** – PyTorch 기반 딥러닝 프레임워크  
+- **datasets** – 대규모 데이터셋 로드 및 전처리 (Hugging Face)  
+- **trl** – 강화 학습을 활용한 LLM 미세 조정 라이브러리 (Hugging Face)  
 
 ### **🌐 Frontend**
-- **Gradio** – 머신러닝 UI 프레임워크  
-- **Pillow** – 이미지 처리 라이브러리  
-- **Scikit-Learn** – 데이터 분석 및 모델 평가  
+- **gradio** – 머신러닝 모델이나 데이터 처리 함수에 대한 웹 인터페이스 제공
+- **requests** – HTTP 요청을 보내고 응답을 처리하는 라이브러리  
+- **base64** – 바이너리 데이터를 Base64 형식으로 인코딩/디코딩하는 모듈  
+- **io.BytesIO** – 메모리에서 파일처럼 데이터를 읽고 쓰는 버퍼 객체  
 
 ### **📡 데이터 크롤링**
 - **Selenium** – 웹 브라우저 자동화  
@@ -97,9 +105,16 @@ graph TD;
 - **Pandas** – 데이터 정렬 및 처리  
 
 ### **📱 Android App**
-- **Jetpack Compose** – 최신 UI 빌드  
-- **Retrofit** – 네트워크 통신 관리  
-- **ML Kit** – Google 머신러닝 SDK 활용  
+- **agp** – Android Gradle Plugin, 안드로이드 프로젝트 빌드를 위한 플러그인  
+- **junit** – Java 기반 단위 테스트 프레임워크  
+- **material** – 구글 머티리얼 디자인 컴포넌트
+- **activity** – 안드로이드 액티비티 생명주기 및 최신 API를 지원
+- **constraintlayout** – 복잡한 UI를 효율적으로 구성할 수 있는 레이아웃 시스템  
+- **retrofit** – REST API와 통신을 쉽게 할 수 있도록 도와주는 HTTP 클라이언트
+- **visionCommon** – Google ML Kit Vision API의 공통 기능을 제공하는 라이브러리  
+- **playServicesTasks** – Google Play Services의 비동기 작업 관리
+- **segmentationSelfie** – Google ML Kit의 셀피 이미지 분할(Selfie Segmentation) 라이브러리  
+- **playServicesMlkitSubjectSegmentation** – ML Kit의 피사체 분할(Subject Segmentation) 기능을 제공하는 라이브러리  
 
 ---
 
@@ -166,9 +181,9 @@ GET http://localhost:8000/get_all_clothing
     "feature": " 스트라이프",
     "image_base64": "/9j/4AAQSkZJRgABAAAD/4gHYSUNDX1AQEAAAAABtbn…",
     "embedding_vector": Array (512),
-    created_at: 2025-02-03T13:50:10.540+00:00,
-    updated_at: 2025-02-03T13:50:10.540+00:00,
-    count: 4
+    "created_at": "2025-02-03T13:50:10.540+00:00",
+    "updated_at": "2025-02-03T13:50:10.540+00:00",
+    "count": 4
   ]
 }
 ```
@@ -177,14 +192,30 @@ GET http://localhost:8000/get_all_clothing
 
 ## 🎨 **프로젝트 화면 예시**  
 
-### 📷 **AI 이미지 분석**  
+### 📷 **안드로이드 카메라 App**  
 <p align="center">
-  <img src="https://your-image-url.com/vision_analysis.png" alt="Vision Model Example" width="700"/>
+  <img src="sample_image\App.png" alt="Vision Model Example" width="200"/>
 </p>
 
-### 🏠 **스마트 옷장 관리 (Gradio UI)**  
+### 🏠 **Otepnsource (Gradio UI)**  
+#### 기초 화면
 <p align="center">
-  <img src="https://your-image-url.com/gradio_ui.png" alt="Gradio UI Example" width="700"/>
+  <img src="sample_image\screenshot1.png" alt="Gradio UI Example" width="700"/>
+</p>
+
+#### 의류 데이터 감지 안내
+<p align="center">
+  <img src="sample_image\screenshot2.png" alt="Gradio UI Example" width="700"/>
+</p>
+
+#### 의류 모델링 결과 출력 및 수정
+<p align="center">
+  <img src="sample_image\screenshot3.png" alt="Gradio UI Example" width="700"/>
+</p>
+
+#### 기존 의류 데이터 불러오기 및 관리
+<p align="center">
+  <img src="sample_image\screenshot4.png" alt="Gradio UI Example" width="700"/>
 </p>
 
 ---
