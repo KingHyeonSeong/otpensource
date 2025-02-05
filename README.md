@@ -217,7 +217,7 @@ GET http://localhost:8000/get_all_clothing
 <p align="center">
   <img src="sample_image\screenshot4.png" alt="Gradio UI Example" width="700"/>
 </p>
-
+ 
 ---
 
 ## 📜 **라이선스**  
