@@ -234,6 +234,6 @@ GET http://localhost:8000/get_all_clothing
 ---
 
 ## 📞 **문의 & 피드백**  
-- **이메일:** hateslop@gmail.com  
+- **이메일:** kingly1684@naver.com
 
 ---
